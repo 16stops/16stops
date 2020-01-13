@@ -28,7 +28,7 @@ $.getJSON('/☰/stops.json').done(function(data){
   if (isMobile == true) {$("#circuitous").removeAttr('onclick')}
 });
  
-$.getJSON('/☰/storyinfo.json').done(function(data){
+$.getJSON('/☰/stopsinfo.json').done(function(data){
   window.circuitousinfo = data;
 
   localStorage.setItem('storyinfo', JSON.stringify(data));
