@@ -1,16 +1,16 @@
-var cacheName = '☰ sauce';
+var cacheName = '16|stops';
 var filesToCache = [
   '/',
   '/index.html',
   '/css/fonts.css',
   '/css/style.css',
   '/manifest.json',
-  '/img/circuitous-16x16.png',
-  '/img/sauce-16x16.png',
-  '/img/+sauce-16x16.png',
+  '/img/16stops-16x16.png',
+  '/img/stops-16x16.png',
+  '/img/+stops-16x16.png',
   '/icon/touch-icon-msapp.png',
   '/js/jquery.js',
-  '/js/circuitous.js'
+  '/js/stops.js'
 ];
 
 /* start the service worker and cache all of the app's content */
