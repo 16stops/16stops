@@ -13,7 +13,7 @@ var infocount = 0;
 
 
 $.getJSON('/☰/stops.json').done(function(data){
-  window.circuitous = data;
+  window.stops = data;
 
   localStorage.setItem('stops', JSON.stringify(data));
 
@@ -25,11 +25,11 @@ $.getJSON('/☰/stops.json').done(function(data){
   CheckCookie();
 
   //console.log(isMobile);
-  if (isMobile == true) {$("#circuitous").removeAttr('onclick')}
+  if (isMobile == true) {$("#stops").removeAttr('onclick')}
 });
  
 $.getJSON('/☰/stopsinfo.json').done(function(data){
-  window.circuitousinfo = data;
+  window.stopsinfo = data;
 
   localStorage.setItem('stopinfo', JSON.stringify(data));
   
@@ -92,50 +92,50 @@ function pickCircuitousInfo(){
 
 function InfoCircuitous(){
   $("#content").css("text-align", "left");
-  if (obj_key_count == (Object.keys(window.circuitousinfo).length) -1) {
+  if (obj_key_count == (Object.keys(window.stopsinfo).length) -1) {
       $("#stops").attr("onclick","pickRandomCircuitous()");
   } 
 
-  var obj_keys = Object.keys(window.circuitousinfo);
+  var obj_keys = Object.keys(window.stopsinfo);
 
   window.ran_key_select = obj_keys[obj_key_count];
-  window.selectedcircuitous = window.circuitousinfo[ran_key_select];
+  window.selectedcircuitous = window.stopsinfo[ran_key_select];
 
   //console.log(Object.keys(window.circuitousinfo).length);
   //console.log(obj_key_count);
 
   if (obj_key_count != (Object.keys(window.circuitousinfo).length)) {    
-      window.selectedcircuitous = window.circuitousinfo[ran_key_select];
+      window.selectedcircuitous = window.stopsinfo[ran_key_select];
  
   } else {
       obj_key_count = 0;
       window.ran_key_select = obj_keys[obj_key_count];
-      window.selectedcircuitous = window.circuitousinfo[ran_key_select];
+      window.selectedcircuitous = window.stopsinfo[ran_key_select];
       //$("#circuitous").attr("onclick","pickRandomCircuitous()");
       //pickRandomCircuitous();
   }
 
-  window.selectedcircuitous = window.circuitousinfo[ran_key_select];
+  window.selectedcircuitous = window.stopsinfo[ran_key_select];
   //console.log(window.ran_key_select);
-  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedcircuitous.circuitousinfo)).replace(/\"/g, "").replace(/\"/g, "");
+  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedcircuitous.stopsinfo)).replace(/\"/g, "").replace(/\"/g, "");
   document.getElementById("cowabunga").innerHTML = window.ran_key_select;
-  console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedcircuitous.circuitousinfo).replace(/\"/g, "").replace(/\"/g, ""));
+  console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedcircuitous.stopsinfo).replace(/\"/g, "").replace(/\"/g, ""));
   
   obj_key_count = obj_key_count + 1;
 }
 
 function RandomCircuitous(){
   $("#content").css("text-align", "center");
-  var obj_keys = Object.keys(window.circuitous);
+  var obj_keys = Object.keys(window.stops);
   window.ran_key_select = obj_keys[Math.floor(Math.random() *obj_keys.length)];
-  window.selectedcircuitous = window.circuitous[ran_key_select];
-  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedcircuitous.circuitous)).replace(/\"/g, "").replace(/\"/g, "");
+  window.selectedcircuitous = window.stops[ran_key_select];
+  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedcircuitous.stops)).replace(/\"/g, "").replace(/\"/g, "");
   document.getElementById("cowabunga").innerHTML = window.ran_key_select;
-  console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedcircuitous.circuitous).replace(/\"/g, "").replace(/\"/g, ""));
+  console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedcircuitous.stops).replace(/\"/g, "").replace(/\"/g, ""));
 }
 
 function CountCircuitous(){
-  var obj_keys = Object.keys(window.circuitous);
+  var obj_keys = Object.keys(window.stops);
   ran_key = (obj_keys.length);
   
   $('span.cow').text(ran_key);
@@ -272,13 +272,13 @@ if (url == 'http://'+window.location.hostname+'/') {
 
 function onlineJson() {
   $.getJSON('/☰/stops.json').done(function(data){
-  	window.circuitous = data;
+  	window.stops = data;
     var netcount = Object.keys(data).length;
     //console.log(netcount);
     if (netcount != cardcount) { // new content detected
       if ('serviceWorker' in navigator) {
         localStorage.setItem('stops', JSON.stringify(data));
-        window.circuitous = JSON.parse(localStorage.getItem('stops'));
+        window.stops = JSON.parse(localStorage.getItem('stops'));
         //console.log('update window.circuitous data');
       }
     }
@@ -288,13 +288,13 @@ function onlineJson() {
   });
 
   $.getJSON('/☰/stopsinfo.json').done(function(data){
-    window.circuitousinfo = data;
+    window.stopsinfo = data;
     var infocount = Object.keys(data).length;
     //console.log(infocount);
     if (infocount != infocount) { // new content detected
       if ('serviceWorker' in navigator) {
         localStorage.setItem('stopsinfo', JSON.stringify(data));
-        window.circuitousinfo = JSON.parse(localStorage.getItem('stopsinfo'));
+        window.stopsinfo = JSON.parse(localStorage.getItem('stopsinfo'));
         //console.log('update window.circuitousinfo data');
       }
     }
