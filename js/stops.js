@@ -31,7 +31,7 @@ $.getJSON('/☰/stops.json').done(function(data){
 $.getJSON('/☰/stopsinfo.json').done(function(data){
   window.circuitousinfo = data;
 
-  localStorage.setItem('storyinfo', JSON.stringify(data));
+  localStorage.setItem('stopinfo', JSON.stringify(data));
   
   infocount = Object.keys(data).length;
   console.log('info ☰ '+infocount);
