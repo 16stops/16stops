@@ -8,7 +8,7 @@ var ran_key = null;
 var count_key = 0;
 var darkness = null;
 
-var cardcount = 0;
+var storycount = 0;
 var infocount = 0;
 
 
@@ -115,11 +115,11 @@ function InfoCircuitous(){
       //pickRandomCircuitous();
   }
 
-  window.selectedcircuitous = window.stopsinfo[ran_key_select];
+  window.selectedstories = window.stopsinfo[ran_key_select];
   //console.log(window.ran_key_select);
-  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedcircuitous.stopsinfo)).replace(/\"/g, "").replace(/\"/g, "");
+  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedstories.stopsinfo)).replace(/\"/g, "").replace(/\"/g, "");
   document.getElementById("cowabunga").innerHTML = window.ran_key_select;
-  console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedcircuitous.stopsinfo).replace(/\"/g, "").replace(/\"/g, ""));
+  console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedcstories.stopsinfo).replace(/\"/g, "").replace(/\"/g, ""));
   
   obj_key_count = obj_key_count + 1;
 }
@@ -128,10 +128,10 @@ function RandomCircuitous(){
   $("#content").css("text-align", "center");
   var obj_keys = Object.keys(window.stops);
   window.ran_key_select = obj_keys[Math.floor(Math.random() *obj_keys.length)];
-  window.selectedcircuitous = window.stops[ran_key_select];
-  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedcircuitous.stops)).replace(/\"/g, "").replace(/\"/g, "");
+  window.selectedstories = window.stops[ran_key_select];
+  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedstories.stops)).replace(/\"/g, "").replace(/\"/g, "");
   document.getElementById("cowabunga").innerHTML = window.ran_key_select;
-  console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedcircuitous.stops).replace(/\"/g, "").replace(/\"/g, ""));
+  console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedstories.stops).replace(/\"/g, "").replace(/\"/g, ""));
 }
 
 function CountCircuitous(){
@@ -275,14 +275,14 @@ function onlineJson() {
   	window.stops = data;
     var netcount = Object.keys(data).length;
     //console.log(netcount);
-    if (netcount != cardcount) { // new content detected
+    if (netcount != storycount) { // new content detected
       if ('serviceWorker' in navigator) {
         localStorage.setItem('stops', JSON.stringify(data));
         window.stops = JSON.parse(localStorage.getItem('stops'));
         //console.log('update window.circuitous data');
       }
     }
-    cardcount = netcount;
+    storycount = netcount;
   	//console.log(isMobile);
   	if (isMobile == true) {$("#stops").removeAttr('onclick')}
   });
