@@ -8,7 +8,7 @@ var ran_key = null;
 var count_key = 0;
 var darkness = null;
 
-var storycount = 0;
+var stopcount = 0;
 var infocount = 0;
 
 
@@ -17,8 +17,8 @@ $.getJSON('/☰/stops.json').done(function(data){
 
   localStorage.setItem('stops', JSON.stringify(data));
 
-  storycount = Object.keys(data).length;
-  console.log('stories ☰ '+storycount);
+  stopcount = Object.keys(data).length;
+  console.log('stories ☰ '+stopcount);
 
   RandomCircuitous();
   CountCircuitous();
@@ -31,7 +31,7 @@ $.getJSON('/☰/stops.json').done(function(data){
 $.getJSON('/☰/stopsinfo.json').done(function(data){
   window.stopsinfo = data;
 
-  localStorage.setItem('stopinfo', JSON.stringify(data));
+  localStorage.setItem('stopsinfo', JSON.stringify(data));
   
   infocount = Object.keys(data).length;
   console.log('info ☰ '+infocount);
@@ -99,27 +99,27 @@ function InfoCircuitous(){
   var obj_keys = Object.keys(window.stopsinfo);
 
   window.ran_key_select = obj_keys[obj_key_count];
-  window.selectedcircuitous = window.stopsinfo[ran_key_select];
+  window.selectedstops = window.stopsinfo[ran_key_select];
 
   //console.log(Object.keys(window.circuitousinfo).length);
   //console.log(obj_key_count);
 
-  if (obj_key_count != (Object.keys(window.circuitousinfo).length)) {    
-      window.selectedcircuitous = window.stopsinfo[ran_key_select];
+  if (obj_key_count != (Object.keys(window.stopsinfo).length)) {    
+      window.selectedstops = window.stopsinfo[ran_key_select];
  
   } else {
       obj_key_count = 0;
       window.ran_key_select = obj_keys[obj_key_count];
-      window.selectedcircuitous = window.stopsinfo[ran_key_select];
+      window.selectedstops = window.stopsinfo[ran_key_select];
       //$("#circuitous").attr("onclick","pickRandomCircuitous()");
       //pickRandomCircuitous();
   }
 
-  window.selectedstories = window.stopsinfo[ran_key_select];
+  window.selectedstops = window.stopsinfo[ran_key_select];
   //console.log(window.ran_key_select);
-  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedstories.stopsinfo)).replace(/\"/g, "").replace(/\"/g, "");
+  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedstops.stopsinfo)).replace(/\"/g, "").replace(/\"/g, "");
   document.getElementById("cowabunga").innerHTML = window.ran_key_select;
-  console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedcstories.stopsinfo).replace(/\"/g, "").replace(/\"/g, ""));
+  console.info('story ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedstops.stopsinfo).replace(/\"/g, "").replace(/\"/g, ""));
   
   obj_key_count = obj_key_count + 1;
 }
@@ -128,10 +128,10 @@ function RandomCircuitous(){
   $("#content").css("text-align", "center");
   var obj_keys = Object.keys(window.stops);
   window.ran_key_select = obj_keys[Math.floor(Math.random() *obj_keys.length)];
-  window.selectedstories = window.stops[ran_key_select];
-  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedstories.stops)).replace(/\"/g, "").replace(/\"/g, "");
+  window.selectedstops = window.stops[ran_key_select];
+  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedstops.stops)).replace(/\"/g, "").replace(/\"/g, "");
   document.getElementById("cowabunga").innerHTML = window.ran_key_select;
-  console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedstories.stops).replace(/\"/g, "").replace(/\"/g, ""));
+  console.info('story ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedstops.stops).replace(/\"/g, "").replace(/\"/g, ""));
 }
 
 function CountCircuitous(){
@@ -200,7 +200,7 @@ function clickCard(){
   setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 500);
   setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 1000);
 
-  $("#circuitous").attr("onclick","pickCircuitousInfo()");
+  $("#stops").attr("onclick","pickCircuitousInfo()");
   pickCircuitousInfo();
 
   //if (getCookie("darkmode")=="disable") {setCookie ("darkmode","auto",365)}
@@ -275,14 +275,14 @@ function onlineJson() {
   	window.stops = data;
     var netcount = Object.keys(data).length;
     //console.log(netcount);
-    if (netcount != storycount) { // new content detected
+    if (netcount != stopcount) { // new content detected
       if ('serviceWorker' in navigator) {
         localStorage.setItem('stops', JSON.stringify(data));
         window.stops = JSON.parse(localStorage.getItem('stops'));
         //console.log('update window.circuitous data');
       }
     }
-    storycount = netcount;
+    stopcount = netcount;
   	//console.log(isMobile);
   	if (isMobile == true) {$("#stops").removeAttr('onclick')}
   });
