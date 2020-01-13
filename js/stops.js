@@ -12,13 +12,13 @@ var cardcount = 0;
 var infocount = 0;
 
 
-$.getJSON('/☰/circuitous.json').done(function(data){
+$.getJSON('/☰/stops.json').done(function(data){
   window.circuitous = data;
 
-  localStorage.setItem('circuitous', JSON.stringify(data));
+  localStorage.setItem('stops', JSON.stringify(data));
 
-  cardcount = Object.keys(data).length;
-  console.log('cards ☰ '+cardcount);
+  storycount = Object.keys(data).length;
+  console.log('stories ☰ '+storycount);
 
   RandomCircuitous();
   CountCircuitous();
@@ -28,10 +28,10 @@ $.getJSON('/☰/circuitous.json').done(function(data){
   if (isMobile == true) {$("#circuitous").removeAttr('onclick')}
 });
  
-$.getJSON('/☰/circuitousinfo.json').done(function(data){
+$.getJSON('/☰/storyinfo.json').done(function(data){
   window.circuitousinfo = data;
 
-  localStorage.setItem('circuitousinfo', JSON.stringify(data));
+  localStorage.setItem('storyinfo', JSON.stringify(data));
   
   infocount = Object.keys(data).length;
   console.log('info ☰ '+infocount);
@@ -86,14 +86,14 @@ function pickCircuitousInfo(){
 
   InfoCircuitous();
   setTimeout(function(){ InfoCircuitous(); }, 3000);
-  if (isMobile == true) {$("#circuitous").removeAttr('onclick')}
+  if (isMobile == true) {$("#stops").removeAttr('onclick')}
   //});
 }
 
 function InfoCircuitous(){
   $("#content").css("text-align", "left");
   if (obj_key_count == (Object.keys(window.circuitousinfo).length) -1) {
-      $("#circuitous").attr("onclick","pickRandomCircuitous()");
+      $("#stops").attr("onclick","pickRandomCircuitous()");
   } 
 
   var obj_keys = Object.keys(window.circuitousinfo);
@@ -117,7 +117,7 @@ function InfoCircuitous(){
 
   window.selectedcircuitous = window.circuitousinfo[ran_key_select];
   //console.log(window.ran_key_select);
-  document.getElementById("circuitous").innerHTML = (JSON.stringify(window.selectedcircuitous.circuitousinfo)).replace(/\"/g, "").replace(/\"/g, "");
+  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedcircuitous.circuitousinfo)).replace(/\"/g, "").replace(/\"/g, "");
   document.getElementById("cowabunga").innerHTML = window.ran_key_select;
   console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedcircuitous.circuitousinfo).replace(/\"/g, "").replace(/\"/g, ""));
   
@@ -129,7 +129,7 @@ function RandomCircuitous(){
   var obj_keys = Object.keys(window.circuitous);
   window.ran_key_select = obj_keys[Math.floor(Math.random() *obj_keys.length)];
   window.selectedcircuitous = window.circuitous[ran_key_select];
-  document.getElementById("circuitous").innerHTML = (JSON.stringify(window.selectedcircuitous.circuitous)).replace(/\"/g, "").replace(/\"/g, "");
+  document.getElementById("stops").innerHTML = (JSON.stringify(window.selectedcircuitous.circuitous)).replace(/\"/g, "").replace(/\"/g, "");
   document.getElementById("cowabunga").innerHTML = window.ran_key_select;
   console.info('card ☰ '+ran_key_select + ' ' + JSON.stringify(window.selectedcircuitous.circuitous).replace(/\"/g, "").replace(/\"/g, ""));
 }
@@ -190,15 +190,15 @@ var url = window.location.href;
   //console.log(window.location.hostname);
 
 function clickSauce(){ 
-  setTimeout(function(){ changeFavicon('/img/circuitous-16x16.png'); }, 100);
-  setTimeout(function(){ changeFavicon('/img/sauce-16x16.png'); }, 500);
-  setTimeout(function(){ changeFavicon('/img/+sauce-16x16.png'); }, 1000);
+  setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 100);
+  setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 500);
+  setTimeout(function(){ changeFavicon('/img/+stops-16x16.png'); }, 1000);
 }
 
 function clickCard(){ 
-  setTimeout(function(){ changeFavicon('/img/+sauce-16x16.png'); }, 100);
-  setTimeout(function(){ changeFavicon('/img/sauce-16x16.png'); }, 500);
-  setTimeout(function(){ changeFavicon('/img/circuitous-16x16.png'); }, 1000);
+  setTimeout(function(){ changeFavicon('/img/+stops-16x16.png'); }, 100);
+  setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 500);
+  setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 1000);
 
   $("#circuitous").attr("onclick","pickCircuitousInfo()");
   pickCircuitousInfo();
@@ -217,9 +217,9 @@ function cardColor(backcolor){
       $("#cardcolor").css("background-color", backcolor);
       //$("#cowabunger").css("color", "rgb(36,36,38)");
       $("#header").css("color", "rgba(255, 255, 255, 255)");
-      $("#circuitous").css("color", "rgba(255, 255, 255, 255)");
-      $("#circuitous a").css("color", "rgba(255, 255, 255,255)");
-      $("#circuitous p").css("color", "rgba(255, 255, 255,255)");
+      $("#stops").css("color", "rgba(255, 255, 255, 255)");
+      $("#stops a").css("color", "rgba(255, 255, 255,255)");
+      $("#stops p").css("color", "rgba(255, 255, 255,255)");
       $("#footer a").css("color", "rgba(255, 255, 255, 255)");
 
       setCookie ("darkmode","enable",365);
@@ -229,9 +229,9 @@ function cardColor(backcolor){
       $("#cardcolor").css("background-color", "rgba(0, 0, 0, 0)");
       //$("#cowabunger").css("color", "rgba(0, 0, 0, 0)");
       $("#header").css("color", "rgba(0, 0, 0, 1)");
-      $("#circuitous").css("color", "rgba(0, 0, 0, 1)");
-      $("#circuitous a").css("color", "rgba(0, 0, 0, 1)");
-      $("#circuitous p").css("color", "rgba(0, 0, 0, 1)");
+      $("#stops").css("color", "rgba(0, 0, 0, 1)");
+      $("#stops a").css("color", "rgba(0, 0, 0, 1)");
+      $("#stops p").css("color", "rgba(0, 0, 0, 1)");
       $("#footer a").css("color", "rgba(0, 0, 0, 1)");
 
       setCookie ("darkmode","auto",365);
@@ -244,7 +244,7 @@ function cardColorDefault() {
 
   $("#cardcolor").css("background-color", "rgba(0, 0, 0, 0)");
   $("#header").css("color", "rgba(0, 0, 0, 1)");
-  $("#circuitous").css("color", "rgba(0, 0, 0, 1)");
+  $("#stops").css("color", "rgba(0, 0, 0, 1)");
   $("#footer a").css("color", "rgba(0, 0, 0, 1)");
 }
 
@@ -252,54 +252,54 @@ function cardColorDark() {
 
   $("#cardcolor").css("background-color", "rgb(36, 36, 38)");
   $("#header").css("color", "rgba(255, 255, 255, 255)");
-  $("#circuitous").css("color", "rgba(255, 255, 255, 255)");
-  $("#circuitous a").css("color", "rgba(255, 255, 255,255)");
-  $("#circuitous p").css("color", "rgba(255, 255, 255,255)");
+  $("#stops").css("color", "rgba(255, 255, 255, 255)");
+  $("#stops a").css("color", "rgba(255, 255, 255,255)");
+  $("#stops p").css("color", "rgba(255, 255, 255,255)");
   $("#footer a").css("color", "rgba(255, 255, 255, 255)");
 }
 
 
 if (url == 'http://'+window.location.hostname+'/') {
-  setTimeout(function(){ changeFavicon('/img/circuitous-16x16.png'); }, 100);
-  setTimeout(function(){ changeFavicon('/img/sauce-16x16.png'); }, 500);
-  setTimeout(function(){ changeFavicon('/img/+sauce-16x16.png'); }, 1000);
+  setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 100);
+  setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 500);
+  setTimeout(function(){ changeFavicon('/img/+stops-16x16.png'); }, 1000);
 } else {
-  setTimeout(function(){ changeFavicon('/img/+sauce-16x16.png'); }, 100);
-  setTimeout(function(){ changeFavicon('/img/sauce-16x16.png'); }, 500);
-  setTimeout(function(){ changeFavicon('/img/circuitous-16x16.png'); }, 1000);
+  setTimeout(function(){ changeFavicon('/img/+stops-16x16.png'); }, 100);
+  setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 500);
+  setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 1000);
 }
 
 
 function onlineJson() {
-  $.getJSON('/☰/circuitous.json').done(function(data){
+  $.getJSON('/☰/stops.json').done(function(data){
   	window.circuitous = data;
     var netcount = Object.keys(data).length;
     //console.log(netcount);
     if (netcount != cardcount) { // new content detected
       if ('serviceWorker' in navigator) {
-        localStorage.setItem('circuitous', JSON.stringify(data));
-        window.circuitous = JSON.parse(localStorage.getItem('circuitous'));
+        localStorage.setItem('stops', JSON.stringify(data));
+        window.circuitous = JSON.parse(localStorage.getItem('stops'));
         //console.log('update window.circuitous data');
       }
     }
     cardcount = netcount;
   	//console.log(isMobile);
-  	if (isMobile == true) {$("#circuitous").removeAttr('onclick')}
+  	if (isMobile == true) {$("#stops").removeAttr('onclick')}
   });
 
-  $.getJSON('/☰/circuitousinfo.json').done(function(data){
+  $.getJSON('/☰/stopsinfo.json').done(function(data){
     window.circuitousinfo = data;
     var infocount = Object.keys(data).length;
     //console.log(infocount);
     if (infocount != infocount) { // new content detected
       if ('serviceWorker' in navigator) {
-        localStorage.setItem('circuitousinfo', JSON.stringify(data));
-        window.circuitousinfo = JSON.parse(localStorage.getItem('circuitousinfo'));
+        localStorage.setItem('stopsinfo', JSON.stringify(data));
+        window.circuitousinfo = JSON.parse(localStorage.getItem('stopsinfo'));
         //console.log('update window.circuitousinfo data');
       }
     }
 
-  if (isMobile == true) {$("#circuitous").removeAttr('onclick')}
+  if (isMobile == true) {$("#stops").removeAttr('onclick')}
   });
 }
 
@@ -464,6 +464,6 @@ window.onload=function(){
       swipeRandomCircuitous();
     }
 
-    detectswipe('circuitous',randomfunction);
+    detectswipe('stops',randomfunction);
 
 }
