@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>16 | stops</title>
+<link rel="manifest" href="/manifest.json">
+
+<link href="/css/fonts.css" rel="stylesheet" type="text/css">
+<link href="/css/style.css" rel="stylesheet" type="text/css">
+<!--<link href="/css/syntax.css" rel="stylesheet" type="text/css">-->
+
+<link id="short-icon" rel="shortcut icon" type="image/x-icon" href="/img/circuitous-16x16.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="apple-touch-icon" href="/icon/touch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icon/touch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="167x167" href="/icon/touch-icon-ipad-retina.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/icon/touch-icon-ipad.png">
+
+<meta name="theme-color" content="black"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="☰ sauce"> 
+<meta name="msapplication-TileImage" content="/icon/touch-icon-msapp.png">  
+<meta name="msapplication-TileColor" content="#FFFFFF">
+
+<!-- splash screens support up to iOS 7, however not working in iOS 8, 9 & 10 but are once again working in iOS 11 -->
+
+<!-- iPhone 5 (640px x 1136px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/splash/iphone5-splash-640x1136.png">
+
+<!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/splash/iphone6-splash-750x1334.png">
+
+<!-- iPhone X (1125px x 2436px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/splash/iphonex-splash-1125x2436.png">
+
+<!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/splash/iphoneplus-splash-1242x2208.png">
+
+<!-- iPad Mini, Air (1536px x 2048px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/splash/ipad-splash-1536x2048.png">
+
+<!-- iPad Pro 10.5" (1668px x 2224px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/splash/ipadpro1-splash-1668x2224.png">
+
+<!-- iPad Pro 12.9" (2048px x 2732px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/splash/ipadpro2-splash-2048x2732.png">
+
+</head>
+<body id="cardcolor">
+
+<div id="header" onclick="cardColor('rgb(36, 36, 38)')" ><span id="plus" class="">16 |</span> stories <span class="cow" style="color:#acacac;font-size:12px">100</span>
+ <span id="cowabunga" style="color:white;font-size:12px;visibility:hidden">100</span></div>
+
+ <div id="page-container">
+   <div id="content">
+     <p onclick="pickRandomCircuitous()" id="circuitous">do something different for a day </p>
+   </div>
+   <footer id="footer">
+<!-- <a href="/☰" onclick="clickCard()"><span style="font-size:11px;position:relative;top:-0.7px">&#9776;</span> circuitous cards</a> -->
+   	<a onclick="clickCard()"><span id="tailcard">&#9776;</span> micro stories</a> 
+   </footer>
+ </div>
+
+<script>
+/*
+ function loadScripts(sources) {sources.forEach(src => {var script = document.createElement('script');script.src = src;script.async = false; //<-- the important part document.body.appendChild( script ); //<-- make sure to append to body instead of head });}loadScripts(['/js/jquery.js','/js/circuitous.js','/js/main.js'])
+*/
+</script>
+
+<script src="/js/jquery.js"></script>
+<script src="/js/circuitous.js"></script> 
+
+</body>
+</html>
