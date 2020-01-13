@@ -260,13 +260,13 @@ function cardColorDark() {
 
 
 if (url == 'http://'+window.location.hostname+'/') {
-  setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 100);
+  setTimeout(function(){ changeFavicon('/img/16stops-16x16.png'); }, 100);
   setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 500);
   setTimeout(function(){ changeFavicon('/img/+stops-16x16.png'); }, 1000);
 } else {
   setTimeout(function(){ changeFavicon('/img/+stops-16x16.png'); }, 100);
   setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 500);
-  setTimeout(function(){ changeFavicon('/img/stops-16x16.png'); }, 1000);
+  setTimeout(function(){ changeFavicon('/img/16stops-16x16.png'); }, 1000);
 }
 
 
